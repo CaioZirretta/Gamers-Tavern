@@ -8,7 +8,7 @@ function debounce(func, timeout = 300){
 
 function minimizeNav(){
   const liA = document.querySelectorAll('.nav li')
-  for(i of liA){
+  for(let i of liA){
     i.classList.toggle('hide')
   }
   const navUser = document.querySelector('.nav .user')

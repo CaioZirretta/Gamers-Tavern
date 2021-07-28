@@ -1,8 +1,9 @@
 :root{
+    /* Colors */
     --hue:269;
     --background-color: hsl(var(--hue), 25%, 35%);
     --base-color: hsl(var(--hue), 20%, 20%);
-    --base-color-dark: hsl(var(--hue), 20%, 15%)
+    --base-color-dark: hsl(var(--hue), 20%, 15%);
 }
 
 body{
@@ -26,25 +27,32 @@ a{
     text-decoration: none;
 }
 
+/* GENERAL CLASSES */
+
+.grid{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
 /* HEADER */
 
 .header{
     width: 100%;
-    height: 3rem;
+    height: var(--header-height);
     padding: .5rem;
     background: var(--base-color-dark);
     position: fixed;
     top: 0;
-    left: 0;
     overflow: hidden;
     display: flex;
     align-items: center;
     z-index: 2;
+    box-shadow: 0px 0px 8px .5px var(--base-color-dark);
 }
 
 .header svg { 
     width: 2rem; 
-    border: 0.5px solid white;
+    border: 1px solid white;
     border-radius: 25%;
     padding: .25rem;
     transition: .3s ease;
@@ -61,7 +69,7 @@ a{
 
 .header span:hover{
     opacity: 100%;
-    transition: opacity .3s ease;
+    transition: .3s ease;
 }
 
 /* NAV MENU */
@@ -73,6 +81,7 @@ a{
     height: 3rem;
     background: var(--base-color-dark);
     z-index: 2;
+    box-shadow: 0px 0px 8px 1px var(--base-color-dark);
 }
 
 .nav ul{
@@ -127,8 +136,8 @@ a{
 }
 
 .nav .i-name{
-    width: fit-content;
-    height: 2rem;
+    width: auto;
+    height: auto;
     background: white;
     color: var(--base-color-dark);
     position: fixed;
@@ -164,13 +173,14 @@ a{
 .nav li.hide:not(:last-child){
     transition: .3s ease;
     transform: translate3d(0,2.5rem,0);
+    pointer-events: none;
     opacity: 0;
 }
 
 .nav .logout{
     display: flex;
     position: fixed;
-    margin: .25rem;
+    margin: .25rem .25rem .25rem .5rem;
     font-size: 2rem;
     padding: .25rem;
     background: var(--base-color);
@@ -215,7 +225,6 @@ a{
 
 .nav .user.show{
     opacity: 1;
-    width: auto;
     transition-delay: .5s;
     transition: .5s ease;
 }
@@ -230,4 +239,108 @@ a{
     font-weight: 100;
     margin-left: .5rem;
     margin-right: .5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .header{
+        width: 18rem;
+        padding: 1rem;
+        height: 4rem;
+        justify-content: space-around;
+        right: 0;
+        border-radius: 0 0 0 12px ;
+    }
+    .header span{
+        font-size: 3rem;
+        height: 3rem;
+    }
+    .header svg{
+        width: 3rem;
+        border: 2px solid white;
+        margin: unset;
+    }
+    .nav{
+        background: var(--base-color-dark);
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 6rem;
+        
+    }
+    .nav ul{
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: unset;
+    }
+    .nav li{
+        justify-content: center;
+        height: 4rem;
+        width: 4rem;
+        border-radius: 12px;    
+    }
+    .nav i{
+        font-size: 3rem;
+        margin: auto;
+    }
+    .nav .i-name{
+        bottom: unset;
+        left: 7rem;
+        transform: translate3d(-1rem,-.5rem,0);
+        font-size: 4rem;
+        padding: .5rem;
+        border-radius: 12px;
+    }
+    .nav li:hover .i-name{
+        transform: translate3d(0,-.5rem,0);
+    }
+    .nav .logout{
+        margin-top: 6rem;
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+    .nav button{
+        margin: .5rem;
+    }
+    .nav li button i{
+        font-size: 3rem;
+    }
+    .nav .user{
+        height: 5rem;
+        width: fit-content;
+        right: unset;
+        left: 7rem;
+        border-radius: 0 0 12px 12px;
+        margin: unset;
+        padding: .5rem;
+        box-shadow: 0px 0px 8px 1px var(--base-color-dark);
+        transform: translate3d(0,-2rem,0);
+    }
+    .nav .user.show{
+        transform: translate3d(0,0,0);
+    }
+    .user img{
+        height: 3rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+    .user .user-info{
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width:900px){
+    .nav .user{
+        left: 8rem;
+    }
+    .user{
+        width: 45%;
+    }
+    .user img{
+        height: 4rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+    .user .user-info{
+        font-size: 3rem;
+    }
 }
