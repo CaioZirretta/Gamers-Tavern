@@ -1,6 +1,8 @@
 :root{
     --hue:269;
     --background-color: hsl(var(--hue), 25%, 35%);
+    --base-color: hsl(var(--hue), 20%, 20%);
+    --base-color-dark: hsl(var(--hue), 20%, 15%)
 }
 
 body{
@@ -17,7 +19,7 @@ ul{
 }
 
 main{ 
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 
 a{
@@ -30,13 +32,14 @@ a{
     width: 100%;
     height: 3rem;
     padding: .5rem;
-    background: hsl(var(--hue), 20%, 15%);
+    background: var(--base-color-dark);
     position: fixed;
     top: 0;
     left: 0;
     overflow: hidden;
     display: flex;
     align-items: center;
+    z-index: 2;
 }
 
 .header svg { 
@@ -68,7 +71,8 @@ a{
     bottom: 0;
     width: 100%;
     height: 3rem;
-    background: hsl(var(--hue), 20%, 15%);
+    background: var(--base-color-dark);
+    z-index: 2;
 }
 
 .nav ul{
@@ -79,7 +83,6 @@ a{
     padding-right: 1rem;
     padding-left: 1rem;
     justify-content: space-between;
-    align-items: center;
 }
 
 .nav li{
@@ -92,12 +95,12 @@ a{
 }
 
 .nav li:last-child{
-    background: hsl(var(--hue), 20%, 20%);
+    background: var(--base-color);
     opacity: 100%;
 }
 
 .nav li:hover{
-    background: hsl(var(--hue), 20%, 20%);
+    background: var(--base-color);
     transition: .3s ease;
 }
 .nav li i{
@@ -105,7 +108,9 @@ a{
     opacity: 75%;
 }
 
-.nav li i:hover {
+.nav li i:hover, 
+.nav li button:hover > i,
+.nav .logout:hover > i {
     transition: .3s ease;
     opacity: 100%;
 }
@@ -125,15 +130,16 @@ a{
     width: fit-content;
     height: 2rem;
     background: white;
-    color: hsl(var(--hue), 20%, 15%);
+    color: var(--base-color-dark);
     position: fixed;
     bottom: 3.25rem;
     padding: .25rem;
     transform: translate3d(-.25rem,-2rem,0);
     border-radius: 4px;
-    opacity: 0%;
     transition: .3s ease;
-    box-shadow: 0px 0px 18px -8px hsl(var(--hue), 20%, 15%);
+    box-shadow: 0px 0px 18px -8px var(--base-color-dark);
+    pointer-events: none;
+    opacity: 0;
 }
 
 .nav button{ 
@@ -144,9 +150,84 @@ a{
     padding: 0;
     width: 2rem;
     height: 2rem;
+    cursor: pointer;
 }
 
 .nav button i{
     font-size: 1.5rem;
 }
 
+.nav button i.rotate{
+    transform: rotate(180deg);
+}
+
+.nav li.hide:not(:last-child){
+    transition: .3s ease;
+    transform: translate3d(0,2.5rem,0);
+    opacity: 0;
+}
+
+.nav .logout{
+    display: flex;
+    position: fixed;
+    margin: .25rem;
+    font-size: 2rem;
+    padding: .25rem;
+    background: var(--base-color);
+    border-radius: 4px;
+    z-index: 3;
+    cursor: pointer;
+    transform: translate3d(-1.5rem,0,0);
+    opacity: 0;
+    transition: .2s ease;
+}
+
+.logout.show{
+    opacity: 1;
+    transform: translate3d(0,0,0);
+    transition: .3s ease;
+}
+
+.nav .logout i{
+    opacity: 75%;
+    transition: .3s ease;
+}
+
+.nav .user{
+    height: 2rem;
+    opacity: 0;
+    max-width: 80%;
+    overflow: hidden;
+    position: fixed;
+    right: 3rem;
+    margin: .25rem 1rem .25rem 1rem;
+    padding: .25rem;
+    background-color: var(--base-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    transition: .1s ease;
+}
+
+.nav .user:hover{
+    background-color: var(--base-color-dark);
+}
+
+.nav .user.show{
+    opacity: 1;
+    width: auto;
+    transition-delay: .5s;
+    transition: .5s ease;
+}
+
+.user img{
+    border-radius: 50%;
+    height: 2rem;
+}
+
+.user .user-info{
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin-left: .5rem;
+    margin-right: .5rem;
+}
