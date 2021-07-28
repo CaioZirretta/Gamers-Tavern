@@ -1,0 +1,152 @@
+:root{
+    --hue:269;
+    --background-color: hsl(var(--hue), 25%, 35%);
+}
+
+body{
+    background: var(--background-color);
+    margin: 0;
+    padding: 0;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    color: white;
+    box-sizing: border-box;
+}
+
+ul{
+    list-style: none;
+}
+
+main{ 
+    margin-top: 3rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* HEADER */
+
+.header{
+    width: 100%;
+    height: 3rem;
+    padding: .5rem;
+    background: hsl(var(--hue), 20%, 15%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.header svg { 
+    width: 2rem; 
+    border: 0.5px solid white;
+    border-radius: 25%;
+    padding: .25rem;
+    transition: .3s ease;
+    margin-right: .5rem;
+}
+
+.header span{
+    height: 2rem;
+    font-size: 2rem;
+    font-weight: 400;
+    transition: .3s ease;
+    opacity: 75%;
+}
+
+.header span:hover{
+    opacity: 100%;
+    transition: opacity .3s ease;
+}
+
+/* NAV MENU */
+
+.nav{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+    background: hsl(var(--hue), 20%, 15%);
+}
+
+.nav ul{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav li{
+    display: inherit;
+    font-size: 2rem;
+    padding: .25rem;
+    border-radius: 4px;
+    transition: .3s ease;
+    cursor: pointer;
+}
+
+.nav li:last-child{
+    background: hsl(var(--hue), 20%, 20%);
+    opacity: 100%;
+}
+
+.nav li:hover{
+    background: hsl(var(--hue), 20%, 20%);
+    transition: .3s ease;
+}
+.nav li i{
+    transition: .3s ease;
+    opacity: 75%;
+}
+
+.nav li i:hover {
+    transition: .3s ease;
+    opacity: 100%;
+}
+
+.nav li:hover .i-name{
+    opacity: 100%;
+    transform: translate3d(-.25rem, -.5rem ,0);
+    transition: .3s ease;
+}
+
+.nav a{
+    color: inherit;
+    display: inherit; /* Inheriting the flex, it will be vertically centered */
+}
+
+.nav .i-name{
+    width: fit-content;
+    height: 2rem;
+    background: white;
+    color: hsl(var(--hue), 20%, 15%);
+    position: fixed;
+    bottom: 3.25rem;
+    padding: .25rem;
+    transform: translate3d(-.25rem,-2rem,0);
+    border-radius: 4px;
+    opacity: 0%;
+    transition: .3s ease;
+    box-shadow: 0px 0px 18px -8px hsl(var(--hue), 20%, 15%);
+}
+
+.nav button{ 
+    background-color: transparent;
+    border: none;
+    color: white;
+    margin: 0;
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
+}
+
+.nav button i{
+    font-size: 1.5rem;
+}
+
