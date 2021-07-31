@@ -14,9 +14,16 @@ function minimizeNav(){
   const navUser = document.querySelector('.nav .user')
   navUser.classList.toggle('show')
 
-  const navMinimize = document.querySelector('.nav li button i')
-  navMinimize.classList.toggle('rotate')
-
   const navLogOut = document.querySelector('.nav .logout')
   navLogOut.classList.toggle('show')
+}
+
+const messages = document.querySelectorAll('.message button')
+
+for(let message of messages){
+  message.addEventListener('click', () => {
+    const messageContainer = message.parentNode.parentNode.parentNode
+    messageContainer.classList.toggle('expand')
+    console.log(messageContainer)
+  })
 }
